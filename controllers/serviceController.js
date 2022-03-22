@@ -3,7 +3,7 @@ const Service = require("../models/Service");
 const fees = async (req, res) => {
   try {
      await Service.create(req.body);
-    res.status(200).json({"Status": "Ok"});
+    res.status(200).json({Status: "Ok"});
   } catch (error) {
     res.status(500).json(error);
   }
