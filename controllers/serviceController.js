@@ -2,8 +2,8 @@ const Service = require("../models/Service");
 
 const fees = async (req, res) => {
   try {
-    const service = await Service.create(req.body);
-    res.status(200).json(service);
+     await Service.create(req.body);
+    res.status(200).json("Ok");
   } catch (error) {
     res.status(500).json(error);
   }
@@ -16,7 +16,7 @@ const compute = async (req, res) => {
     const service = await Service.findById(_id).lean();
 
     if(!service) {
-      res.status(404).json("Invalid Credential")
+      res.status(404).json("No fee configuration for USD transactions")
     }
 
     const { Amount, CurrencyCountry } = service;
