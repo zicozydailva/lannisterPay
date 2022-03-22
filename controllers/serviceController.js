@@ -15,10 +15,8 @@ const compute = async (req, res) => {
 
     const service = await Service.findById(_id).lean();
 
-    if(!service) {
-      res.status(404).json("No fee configuration for USD transactions")
-    }
-
+    !service && res.status(404).json("No fee configuration for USD transactions")
+  
     const { Amount, CurrencyCountry } = service;
     const id = service._id;
     const customerDetails = service.Customer;

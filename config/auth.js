@@ -24,4 +24,11 @@ const fieldAuth = (req, res, next) => {
     next()
 }
 
-module.exports = fieldAuth;
+const serviceChecker = (req, res, next) => {
+   if(!req.params.id) {
+    return res.status(404).json("No fee configuration for USD transactions")
+   }
+   next()
+}
+
+module.exports = {fieldAuth, serviceChecker};
